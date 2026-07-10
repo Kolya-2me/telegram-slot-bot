@@ -3,7 +3,7 @@ import asyncio
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message
 
-TOKEN = os.getenv("8796297557:AAHo_gnivB9Me2i6d58mabtZFEaSWqM7ltg")
+TOKEN = os.getenv("BOT_TOKEN")
 
 if not TOKEN:
     raise ValueError("Не найдена переменная окружения BOT_TOKEN")
