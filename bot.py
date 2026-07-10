@@ -11,6 +11,7 @@ if not TOKEN:
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
+
 @dp.message(F.dice)
 async def delete_slot(message: Message):
     if message.dice.emoji == "🎰":
@@ -20,9 +21,16 @@ async def delete_slot(message: Message):
         except Exception as e:
             print(f"Ошибка удаления: {e}")
 
+
 async def main():
-    print("Бот запущен...")
+    print("Бот запущен")
+
+    # Удаляем старый webhook, если он был установлен
+    await bot.delete_webhook(drop_pending_updates=True)
+
+    # Запускаем получение сообщений
     await dp.start_polling(bot)
+
 
 if __name__ == "__main__":
     asyncio.run(main())
