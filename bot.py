@@ -13,11 +13,22 @@ dp = Dispatcher()
 
 
 @dp.message(F.dice)
-async def delete_slot(message: Message):
-    if message.dice.emoji == "🎰":
+async def delete_games(message: Message):
+    game_emojis = {
+        "🎰",  # Казино
+        "🎯",  # Дартс
+        "🎲",  # Кубик
+        "🏀",  # Баскетбол
+        "⚽",  # Футбол
+        "🎳",  # Боулинг
+    }
+
+    if message.dice.emoji in game_emojis:
         try:
             await message.delete()
-            print(f"Удалено сообщение с 🎰 от {message.from_user.full_name}")
+            print(
+                f"Удалена игра {message.dice.emoji} от {message.from_user.full_name}"
+            )
         except Exception as e:
             print(f"Ошибка удаления: {e}")
 
